@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <title>EPROVA - Shopping Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 20px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        /* الخط المتحرك تحت اللينك */
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: black;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* منع translate في hover */
+        nav ul li a:hover {
+            background: none;
+            color: black;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-icons i {
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header-icons i:hover {
+            color: #c0392b;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #c0392b;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #222;
+        }
+
+        /* Cart Table */
+        .cart-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .cart-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cart-item {
+            padding: 25px 20px;
+            border-bottom: 1px solid #eee;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .product-info {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .product-details h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-details .color {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .product-details .remove {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .product-details .remove:hover {
+            text-decoration: underline;
+        }
+
+        .price {
+            font-weight: 600;
+            color: #c0392b;
+            font-size: 18px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: #f8f8f8;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #e9ecef;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 32px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .total {
+            font-weight: 600;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Gift Wrap Section */
+        .gift-wrap-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .gift-wrap-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gift-wrap-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #c0392b;
+        }
+
+        .gift-wrap-option label {
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .subtotal-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0 15px 0;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #333;
+        }
+
+        .view-cart-link {
+            display: block;
+            text-align: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .view-cart-link:hover {
+            color: #333;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: white;
+            margin-top: 60px;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .newsletter-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .newsletter-section p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .newsletter-btn {
+            padding: 15px 30px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        .footer {
+            background: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            width: 100px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #333;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: row;
+                gap: 15px;
+                position: relative;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 3;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                border-top: 1px solid #e5e5e5;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 20px;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px 0;
+                border-radius: 0;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
+
+            .cart-header,
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .cart-header {
+                display: none;
+            }
+
+            .product-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .quantity-controls {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 0 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .cart-item {
+                padding: 15px 10px;
+            }
+
+            .product-image {
+                width: 60px;
+                height: 80px;
+            }
+
+            .product-details h4 {
+                font-size: 14px;
+            }
+
+            .quantity-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            .quantity-input {
+                width: 40px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            .checkout-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .newsletter-section {
+                padding: 30px 15px;
+            }
+
+            .newsletter-section h2 {
+                font-size: 20px;
+            }
+
+            .newsletter-section p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <img src="/scr/Logo-removebg-preview.png" alt="EPROVA" class="logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cart.html" class="active">cart</a></li>
+                    <li><a href="Shop.html">Shop</a></li>
+                    <li><a href="project.html">Products</a></li>
+                    <li><a href="index.html">Pages</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html">Register</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="login.html"><i class="fa-regular fa-user"></i></a>
+                <i class="fa-regular fa-star"></i>
+                <div class="cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">1</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> > Your Shopping Cart
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Shopping Cart</h1>
+
+        <!-- Cart Table -->
+        <div class="cart-table">
+            <div class="cart-header">
+                <div>Product</div>
+                <div>Price</div>
+                <div>Quantity</div>
+                <div>Total</div>
+                <div></div>
+            </div>
+
+            <div class="cart-item">
+                <div class="product-info">
+                    <img src="/scr/p1.jpg" alt="Mini Dress" class="product-image">
+                    <div class="product-details">
+                        <h4>Mini Dress With Ruffled Straps</h4>
+                        <div class="color">Color: Red</div>
+                        <a href="#" class="remove">Remove</a>
+                    </div>
+                </div>
+                <div class="price">$14.90</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <input type="text" class="quantity-input" id="quantity" value="01" readonly>
+                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+                <div class="total" id="itemTotal">$14.90</div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Gift Wrap Section -->
+        <div class="gift-wrap-section">
+            <div class="gift-wrap-option">
+                <input type="checkbox" id="giftWrap" onchange="updateTotal()">
+                <label for="giftWrap">For $10.00 Please Wrap The Product</label>
+            </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+            <div class="subtotal-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$100.00</span>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+            <a href="project.html" class="view-cart-link">Continue Shopping</a>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="main-container">
+        <div class="newsletter-section">
+            <h2>Subscribe To Our Newsletter</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam aem, scelerisque duis ultrices sollicitudin.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Shamel460@gmail.com" value="Shamel460@gmail.com">
+                <button type="submit" class="newsletter-btn">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <img src="/scr/Logo-removebg-preview.png" alt="EPROVA" class="footer-logo">
+                        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cart.html">Shop</a></li>
+            <li><a href="project.html">Products</a></li>
+            <li><a href="index.html">Pages</a></li>
+        </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2023 FASCO. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let quantity = 1;
+        const basePrice = 14.90;
+        const giftWrapPrice = 10.00;
+
+        function increaseQuantity() {
+            quantity++;
+            updateQuantity();
+            updateTotal();
+        }
+
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                quantity--;
+                updateQuantity();
+                updateTotal();
+            }
+        }
+
+        function updateQuantity() {
+            document.getElementById('quantity').value = quantity.toString().padStart(2, '0');
+            document.getElementById('itemTotal').textContent = `$${(basePrice * quantity).toFixed(2)}`;
+        }
+
+        function updateTotal() {
+            const giftWrap = document.getElementById('giftWrap').checked;
+            const itemTotal = basePrice * quantity;
+            const total = itemTotal + (giftWrap ? giftWrapPrice : 0);
+            document.getElementById('subtotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Initialize
+        updateQuantity();
+        updateTotal();
+    </script>
+
+    <script>
+        // Mobile menu functionality
+        function initializeMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('nav');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+        }
+
+        // Initialize mobile menu when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobileMenu();
+        });
+    </script>
+    <script src="./js/common.js"></script>
+    <script src="./js/auth-check.js"></script>
+</body>
+</html>

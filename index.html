@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> EPROVA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+        <link rel="stylesheet" href="./css/homeStyle.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+
+</head>
+<body>
+    <div class="header">
+      <a href="#"><img src="./scr/Logo-removebg-preview.png" alt="" style="width: min-content;"></a>
+      <button class="menu-toggle" aria-label="Open navigation menu">&#9776;</button>
+      <ul class="nav-list">
+        <li> <a href="project.html">deals</a></li>
+        <li><a href="Shop.html">shop</a></li>
+        <li><a href="cart.html">new arrivals</a></li>
+        <li><a href="checkout.html">checkout</a></li>
+        <li><a href="#">contact us</a></li>
+        <li><a href="login.html">sign in</a></li>
+        <li class="active"><a href="signup.html">register</a></li>
+      </ul>
+    </div>
+
+      <div class="row hero">
+    <!-- Left Image -->
+    <div class="col-4 col-s-4 hero-img">
+      <img src="./scr/pexels-postiglioni-852860.jpg" alt="Model 1">
+    </div>
+
+    <!-- Center Content -->
+    <div class="col-4 col-s-4 hero-center">
+      <h1>ULTIMATE</h1>
+      <h2>SALE</h2>
+      <p>NEW COLLECTION</p>
+      <button onclick="window.location.href='project.html'">SHOP NOW</button>
+      <div class="small-banner">
+        <img src="./scr/pexels-athena-2043590.jpg" alt="Small Banner">
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="col-4 col-s-4 hero-img">
+      <img src="./scr/pexels-frendsmans-1926769.jpg" alt="Model 2">
+    </div>
+  </div>
+
+  <div class="row deal-section">
+    <!-- Left Column (Text + Button + Timer) -->
+    <div class="col-3 col-s-6  deal-text">
+      <h2>Deals Of The Month</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+         Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+      <button class="btn" onclick="window.location.href='cart.html'">Buy Now</button>
+
+      <h3>Hurry, Before It’s Too Late!</h3>
+      <div class="countdown">
+        <div><span id="index-days">02</span><small>Days</small></div>
+        <div><span id="index-minutes">05</span><small>Mins</small></div>
+        <div><span id="index-seconds">30</span><small>Sec</small></div>
+      </div>
+    </div>
+    <!-- Right Column (Image) -->
+     <div class="col-9 col-s-6 deal-slider-section">
+      <div class="slider-container">
+        <div class="deal-slider" id="slider">
+          <img src="./scr/dom-hill-nimElTcTNyY-unsplash.jpg" alt="Black Dress">
+          <img src="./scr/young-european-woman-jeans-plaid-jacket-poses-portrait-beige-wall.jpg" alt="Black Dress">
+          <img src="./scr/pexels-godisable-jacob-226636-794062.jpg" alt="Black Dress">
+          <img src="./scr/raamin-ka-74jERQtN1V4-unsplash.jpg" alt="Blue Summer Outfit">
+          <img src="./scr/p1.jpg" alt="Street Style">
+          <img src="./scr/portrait-pretty-woman-sunglasses-hat-blue-colorful-wall.jpg" alt="Street Style">
+        </div>
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+        <div class="slider-dots" id="sliderDots">
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+
+<!-- Product Grid -->
+<div class="section-header">
+  <h2>New Arrivals</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+</div>
+
+<!-- Category Buttons -->
+<div class="category-buttons">
+  <button>Men's Fashion</button>
+  <button class="active">Women's Fashion</button>
+  <button>Women Accessories</button>
+  <button>Men Accessories</button>
+  <button>Discount Deals</button>
+</div>
+
+<!-- New Arrivals Grid -->
+<div class="new-arrivals">
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/pexels-kowalievska-1381556.jpg" alt="Elegant Blazer">
+      <div class="card-content">
+        <h3>Shiny Dress</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/dom-hill-nimElTcTNyY-unsplash.jpg" alt="Street Style Jacket">
+      <div class="card-content">
+        <h3>Long Dress</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/pexels-minan1398-1163194.jpg" alt="Summer Dress">
+      <div class="card-content">
+        <h3>Full Sweater</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/pexels-frendsmans-1926769.jpg" alt="Classic Coat">
+      <div class="card-content">
+        <h3>White Dress</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/p1.jpg" alt="Trendy Suit">
+      <div class="card-content">
+        <h3>White Dress</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-s-6 col-4">
+    <div class="card" onclick="window.location.href='checkout.html'" style="cursor: pointer;">
+      <img src="./scr/pexels-olly-974911.jpg" alt="Fashion Hoodie">
+      <div class="card-content">
+        <h3>White Shirt</h3>
+        <div class="brand">Al Karam</div>
+        <div class="category">All Seasons</div>
+        <div class="reviews">
+          <div class="stars">★★★★★</div>
+          <div class="count">(4.1k) Customer Reviews</div>
+        </div>
+        <div class="price">$95.50</div>
+        <div class="stock">Almost Sold Out</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="load-more">
+    <button>Load More</button>
+</div>
+
+<div class="folow-us">
+    <h2>Follow Us On Instagram</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultricies sollicitudin aliquam sem.</p>
+
+    <div class="row gallery">
+  <div class="col-s-2 col-2"><img src="./scr/nicole-geri-Eb1mX9ds7sc-unsplash.jpg" alt="Model 1"></div>
+  <div class="col-s-2 col-2"><img src="./scr/dom-hill-JqZlSnI2ctA-unsplash.jpg" alt="Model 2"></div>
+  <div class="col-s-2 col-2"><img src="./scr/napat-saeng-mVGW8j9rrC4-unsplash.jpg" alt="Black Dress"></div>
+  <div class="col-s-2 col-2"><img src="./scr/pexels-godisable-jacob-226636-914668.jpg" alt="Elegant Blazer"></div>
+  <div class="col-s-2 col-2"><img src="./scr/p1.jpg" alt="Summer Dress"></div>
+  <div class="col-s-2 col-2"><img src="./scr/raamin-ka-74jERQtN1V4-unsplash.jpg" alt="Fashion Hoodie"></div>
+    </div>
+</div>
+
+<div class="testimonials">
+    <h2>This Is What Our Customers Say</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis.</p>
+
+    <div class="testimonial-carousel">
+        <div class="testimonial-track">
+            <div class="testimonial-item">
+                <div class="testimonial-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHx8MA%3D%3D" alt="Customer 1">
+                    <p>"You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!"</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="customer-name">James K.</div>
+                    <div class="customer-role">Traveler</div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-card">
+                    <img src="https://i.pinimg.com/originals/8a/76/0c/8a760c2a013aa5d83e0bee58db0fe6c8.jpg" alt="Customer 2">
+                    <p>"This service exceeded my expectations. It made everything easy and stress-free!"</p>
+                    <div class="stars">★★★★★</div>
+                    <div class="customer-name">Sarah L.</div>
+                    <div class="customer-role">Entrepreneur</div>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-card">
+                    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Customer 3">
+                    <p>"Amazing experience! I would definitely recommend it to my friends."</p>
+                    <div class="stars">★★★★☆</div>
+                    <div class="customer-name">David M.</div>
+                    <div class="customer-role">Photographer</div>
+                </div>
+            </div>
+        </div>
+        <button class="testimonial-nav left" onclick="prevTestimonial()">&#10094;</button>
+        <button class="testimonial-nav right" onclick="nextTestimonial()">&#10095;</button>
+    </div>
+</div>
+
+<div class="nl-row nl-section">
+  <!-- Left Image -->
+  <div class="col-3 col-s-12 nl-img-box">
+    <img src="./scr/dom-hill-nimElTcTNyY-unsplash.jpg" alt="Male model">
+  </div>
+
+  <!-- Newsletter Content -->
+  <div class="col-6 col-s-12">
+    <div class="nl-newsletter">
+      <h2>Subscribe To Our Newsletter</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.
+        Scelerisque duis ultrices sollicitudin.</p>
+      <input type="email" placeholder="michael@ymail.com">
+      <br>
+      <button>Subscribe Now</button>
+    </div>
+  </div>
+
+  <!-- Right Image -->
+  <div class="col-3 col-s-12 nl-img-box">
+    <img src="./scr/oleg-ivanov-QhR78CbFPoE-unsplash.jpg" alt="Female model">
+  </div>
+</div>
+
+<footer class="nl-footer">
+    <div class="nl-footer-top">
+      <div class="nl-footer-logo"><img src="./scr/Logo-removebg-preview.png" alt=""></div>
+      <nav class="nl-footer-nav">
+        <a href="#">Support Center</a>
+        <a href="#">Invoicing</a>
+        <a href="#">Contract</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">FAQ,s</a>
+      </nav>
+    </div>
+    <div class="nl-footer-bottom">
+      Copyright © 2022 Xpro . All Rights Reserved.
+    </div>
+  </footer>
+
+
+
+
+    <script src="./js/homeScript.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/auth-check.js"></script>
+<script>
+// Countdown Timer for index.html
+function startIndexCountdown() {
+  let totalSeconds = 2 * 24 * 60 * 60 + 6 * 60 * 60 + 5 * 60 + 30;
+
+  const timer = setInterval(() => {
+    totalSeconds--;
+
+    if (totalSeconds <= 0) {
+      clearInterval(timer);
+      document.getElementById("index-days").innerHTML = "00";
+      document.getElementById("index-hours").innerHTML = "00";
+      document.getElementById("index-minutes").innerHTML = "00";
+      document.getElementById("index-seconds").innerHTML = "00";
+      return;
+    }
+
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("index-days").innerHTML = days.toString().padStart(2, "0");
+    document.getElementById("index-hours").innerHTML = hours.toString().padStart(2, "0");
+    document.getElementById("index-minutes").innerHTML = minutes.toString().padStart(2, "0");
+    document.getElementById("index-seconds").innerHTML = seconds.toString().padStart(2, "0");
+  }, 1000);
+}
+
+// Start countdown when page loads
+window.addEventListener("load", startIndexCountdown);
+</script>
+</html>
+</body>
+</html>
