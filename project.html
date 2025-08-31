@@ -10,17 +10,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
     <title>EPROVA</title>
     <style>
       @font-face {
-  font-family: 'Digital-7';
-  src: url('/scr/acc/digital-7.ttf') format('truetype');
-}
+        font-family: "Digital-7";
+        src: url("scr/acc/digital-7.ttf") format("truetype");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -31,84 +34,84 @@
         font-family: "Segoe UI", sans-serif;
         margin-top: 30px;
       }
-             header {
-         max-width: 1300px;
-         margin: auto;
-         margin-top: 20px;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 15px 30px;
-         position: relative;
-       }
-             .logo {
-         width: 250px;
-         height: 100px;
-         object-fit: contain;
-         object-position: center;
-       }
+      header {
+        max-width: 1300px;
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        position: relative;
+      }
+      .logo {
+        width: 250px;
+        height: 100px;
+        object-fit: contain;
+        object-position: center;
+      }
 
-       .menu-toggle {
-         display: none;
-         background: none;
-         border: none;
-         font-size: 24px;
-         cursor: pointer;
-         color: #333;
-         padding: 5px;
-         border-radius: 4px;
-         transition: background-color 0.3s ease;
-       }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+        padding: 5px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
 
-       .menu-toggle:hover {
-         background-color: #f5f5f5;
-       }
+      .menu-toggle:hover {
+        background-color: #f5f5f5;
+      }
       nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
 
-nav ul li {
-  position: relative;
-}
+      nav ul li {
+        position: relative;
+      }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 20px;
-  position: relative;
-  transition: color 0.3s ease; /* بس لون النص */
-}
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 20px;
+        position: relative;
+        transition: color 0.3s ease; /* بس لون النص */
+      }
 
-/* الخط المتحرك تحت اللينك */
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: black;
-  transition: width 0.3s ease;
-}
+      /* الخط المتحرك تحت اللينك */
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: black;
+        transition: width 0.3s ease;
+      }
 
-nav ul li a:hover::after {
-  width: 100%; /* يظهر من اليمين للشمال */
-}
+      nav ul li a:hover::after {
+        width: 100%; /* يظهر من اليمين للشمال */
+      }
 
-/* منع translate في hover */
-nav ul li a:hover {
-  background: none;
-  color: black;
-  transform: none;
-  box-shadow: none;
-}
+      /* منع translate في hover */
+      nav ul li a:hover {
+        background: none;
+        color: black;
+        transform: none;
+        box-shadow: none;
+      }
       .icons {
         display: flex;
         gap: 20px;
@@ -231,39 +234,43 @@ nav ul li a:hover {
         margin: 10px 0 16px;
       }
       .countdown {
-    color: #333333;
-    border: none;
-    padding: 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    margin: 12px 0 18px;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-around;
-}
-      
+        color: #333333;
+        border: none;
+        padding: 20px;
+        border-radius: 15px;
+        font-weight: 600;
+        margin: 12px 0 18px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+      }
+
       .countdown::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
         pointer-events: none;
       }
-      
+
       .countdown span {
-        font-family: 'Digital-7', monospace !important; 
-         font-size: 28px;
-         font-weight: 700;
-         display: block;
-         margin-bottom: 5px;
-         color: #333333;
-         line-height: 1;
+        font-family: "Digital-7", monospace !important;
+        font-size: 28px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+        color: #333333;
+        line-height: 1;
       }
       .stock_text {
         font-size: 14px;
@@ -437,8 +444,8 @@ nav ul li a:hover {
         font-size: 14px;
         color: #666;
       }
- /* Updated Promo Section Styles */
- .promo {
+      /* Updated Promo Section Styles */
+      .promo {
         background: #fff;
         padding: 60px 80px;
         max-width: 1400px;
@@ -508,124 +515,122 @@ nav ul li a:hover {
         color: #d63031;
       }
 
-             /* Countdown Timer Styles - Matching the image exactly */
-       .promo_left .countdown {
-         display: flex;
-         gap: 15px;
-         justify-content: center;
-         align-items: center;
-         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
-       }
+      /* Countdown Timer Styles - Matching the image exactly */
+      .promo_left .countdown {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+      }
 
-       .promo_left .countdown div {
-         background: #ffffff;
+      .promo_left .countdown div {
+        background: #ffffff;
 
-         text-align: center;
-         min-width: 70px;
+        text-align: center;
+        min-width: 70px;
+      }
 
+      .promo_left .countdown span {
+        font-family: "Digital-7", monospace !important;
+        font-size: 45px;
+        border-radius: 8px;
+        font-weight: 700;
 
-       }
+        padding: 15px 10px;
+        display: block;
+        margin-bottom: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        border: 1px solid #e9ecef;
+        color: #333333;
+        line-height: 1;
+      }
 
-       .promo_left .countdown span {
-        font-family: 'Digital-7', monospace !important; 
-         font-size: 45px;
-         border-radius: 8px;
-         font-weight: 700;
+      .promo_left .countdown p {
+        font-size: 22px;
+        color: #666666;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin: 0;
+        padding: 0;
+      }
+      .promo_right {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+      }
 
-         padding: 15px 10px;
-         display: block;
-         margin-bottom: 5px;
-         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-         border: 1px solid #e9ecef;
-         color: #333333;
-         line-height: 1;
-       }
+      .carousel-container {
+        display: flex;
+        gap: 20px;
+        transition: transform 0.5s ease;
+        width: 300%;
+      }
 
-       .promo_left .countdown p {
-         font-size: 22px;
-         color: #666666;
-         font-weight: 500;
-         text-transform: capitalize;
-         margin: 0;
-         padding: 0;
-       }
-             .promo_right {
-         flex: 1;
-         position: relative;
-         overflow: hidden;
-       }
-       
-       .carousel-container {
-         display: flex;
-         gap: 20px;
-         transition: transform 0.5s ease;
-         width: 300%;
-       }
-       
-       .promo_item {
-         position: relative;
-       }
-       
-       .promo_item img {
-         width: 100%;
-         border-radius: 12px;
-         object-fit: cover;
-         object-position: center;
-         height: 300px;
-         transition: transform 0.3s ease;
-       }
-       
-       .promo_item:hover img {
-         transform: scale(1.05);
-       }
-       
-       .carousel-controls {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         gap: 20px;
-         margin-top: 20px;
-       }
-       
-       .carousel-btn {
-         width: 40px;
-         height: 40px;
-         border-radius: 50%;
-         background: #333;
-         color: white;
-         border: none;
-         cursor: pointer;
-         font-size: 18px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         transition: all 0.3s ease;
-       }
-       
-       .carousel-btn:hover {
-         background: #555;
-         transform: scale(1.1);
-       }
-       
-       .carousel-dots {
-         display: flex;
-         gap: 8px;
-         margin-top: 15px;
-         justify-content: center;
-       }
-       
-       .dot {
-         width: 10px;
-         height: 10px;
-         border-radius: 50%;
-         background: #ddd;
-         cursor: pointer;
-         transition: background 0.3s ease;
-       }
-       
-       .dot.active {
-         background: #333;
-       }
+      .promo_item {
+        position: relative;
+      }
+
+      .promo_item img {
+        width: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+        object-position: center;
+        height: 300px;
+        transition: transform 0.3s ease;
+      }
+
+      .promo_item:hover img {
+        transform: scale(1.05);
+      }
+
+      .carousel-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .carousel-btn:hover {
+        background: #555;
+        transform: scale(1.1);
+      }
+
+      .carousel-dots {
+        display: flex;
+        gap: 8px;
+        margin-top: 15px;
+        justify-content: center;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .dot.active {
+        background: #333;
+      }
       .discount {
         position: absolute;
         bottom: 20px;
@@ -862,37 +867,37 @@ nav ul li a:hover {
           font-size: 28px;
         }
 
-                 .countdown {
-           flex-wrap: wrap;
-           gap: 10px;
-         }
+        .countdown {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
 
-         .countdown div {
-           padding: 10px 15px;
-           min-width: 60px;
-         }
+        .countdown div {
+          padding: 10px 15px;
+          min-width: 60px;
+        }
 
-         .countdown span {
-           font-size: 20px;
-         }
+        .countdown span {
+          font-size: 20px;
+        }
 
-         .carousel-container {
-           width: 200%;
-         }
+        .carousel-container {
+          width: 200%;
+        }
 
-         .promo_item {
-           min-width: calc(50% - 10px);
-         }
+        .promo_item {
+          min-width: calc(50% - 10px);
+        }
 
-         .carousel-controls {
-           margin-top: 15px;
-         }
+        .carousel-controls {
+          margin-top: 15px;
+        }
 
-         .carousel-btn {
-           width: 35px;
-           height: 35px;
-           font-size: 16px;
-         }
+        .carousel-btn {
+          width: 35px;
+          height: 35px;
+          font-size: 16px;
+        }
 
         .newsletter {
           flex-direction: column;
@@ -1013,40 +1018,40 @@ nav ul li a:hover {
           padding: 8px 12px;
         }
 
-                 .countdown span {
-           font-size: 18px;
-         }
+        .countdown span {
+          font-size: 18px;
+        }
 
-         .countdown p {
-           font-size: 12px;
-         }
+        .countdown p {
+          font-size: 12px;
+        }
 
-         .carousel-container {
-           width: 600%;
-         }
+        .carousel-container {
+          width: 600%;
+        }
 
-         .promo_item {
-           min-width: calc(16.666% - 16.66px);
-         }
+        .promo_item {
+          min-width: calc(16.666% - 16.66px);
+        }
 
-         .carousel-controls {
-           margin-top: 10px;
-         }
+        .carousel-controls {
+          margin-top: 10px;
+        }
 
-         .carousel-btn {
-           width: 30px;
-           height: 30px;
-           font-size: 14px;
-         }
+        .carousel-btn {
+          width: 30px;
+          height: 30px;
+          font-size: 14px;
+        }
 
-         .carousel-dots {
-           gap: 6px;
-         }
+        .carousel-dots {
+          gap: 6px;
+        }
 
-         .dot {
-           width: 8px;
-           height: 8px;
-         }
+        .dot {
+          width: 8px;
+          height: 8px;
+        }
 
         .newsletter h2 {
           font-size: 24px;
@@ -1066,336 +1071,350 @@ nav ul li a:hover {
           height: 60px;
         }
 
-                 .footer_links a {
-           font-size: 14px;
-         }
-       }
+        .footer_links a {
+          font-size: 14px;
+        }
+      }
 
-       /* Shopping Cart Styles */
-       .cart-overlay {
-         position: fixed;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background: rgba(0, 0, 0, 0.5);
-         z-index: 1000;
-         display: none;
-         justify-content: flex-end;
-         align-items: flex-start;
-       }
+      /* Shopping Cart Styles */
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: none;
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
 
-       .cart-container {
-         background: white;
-         width: 400px;
-         height: 100vh;
-         padding: 20px;
-         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-         overflow-y: auto;
-         position: relative;
-       }
+      .cart-container {
+        background: white;
+        width: 400px;
+        height: 100vh;
+        padding: 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        position: relative;
+      }
 
-       .cart-header {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         margin-bottom: 20px;
-         padding-bottom: 15px;
-         border-bottom: 1px solid #eee;
-       }
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
 
-       .cart-header h2 {
-         font-size: 24px;
-         color: #333;
-         margin: 0;
-       }
+      .cart-header h2 {
+        font-size: 24px;
+        color: #333;
+        margin: 0;
+      }
 
-       .close-cart {
-         background: none;
-         border: none;
-         font-size: 24px;
-         cursor: pointer;
-         color: #666;
-         padding: 5px;
-       }
+      .close-cart {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+        padding: 5px;
+      }
 
-       .close-cart:hover {
-         color: #333;
-       }
+      .close-cart:hover {
+        color: #333;
+      }
 
-       .free-shipping {
-         background: #e8f5e8;
-         color: #2d5a2d;
-         padding: 12px;
-         border-radius: 8px;
-         margin-bottom: 20px;
-         font-weight: 600;
-         text-align: center;
-       }
+      .free-shipping {
+        background: #e8f5e8;
+        color: #2d5a2d;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        text-align: center;
+      }
 
-       .cart-item {
-         display: flex;
-         gap: 15px;
-         padding: 15px 0;
-         border-bottom: 1px solid #eee;
-       }
+      .cart-item {
+        display: flex;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
 
-       .cart-item-img {
-         width: 80px;
-         height: 100px;
-         object-fit: cover;
-         border-radius: 8px;
-       }
+      .cart-item-img {
+        width: 80px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
 
-       .cart-item-details {
-         flex: 1;
-       }
+      .cart-item-details {
+        flex: 1;
+      }
 
-       .cart-item-title {
-         font-weight: 600;
-         margin-bottom: 5px;
-         color: #333;
-       }
+      .cart-item-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #333;
+      }
 
-       .cart-item-color {
-         color: #666;
-         font-size: 14px;
-         margin-bottom: 8px;
-       }
+      .cart-item-color {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
 
-       .cart-item-price {
-         font-weight: 600;
-         color: #c0392b;
-         font-size: 18px;
-       }
+      .cart-item-price {
+        font-weight: 600;
+        color: #c0392b;
+        font-size: 18px;
+      }
 
-       .cart-item-qty {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         margin-top: 10px;
-       }
+      .cart-item-qty {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
 
-       .cart-item-qty button {
-         width: 30px;
-         height: 30px;
-         border: 1px solid #ddd;
-         background: #f8f8f8;
-         cursor: pointer;
-         border-radius: 4px;
-         font-size: 16px;
-       }
+      .cart-item-qty button {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+      }
 
-       .cart-item-qty input {
-         width: 40px;
-         height: 30px;
-         text-align: center;
-         border: 1px solid #ddd;
-         border-radius: 4px;
-         font-size: 14px;
-       }
+      .cart-item-qty input {
+        width: 40px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
 
-       .gift-wrap {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         margin: 20px 0;
-         padding: 15px;
-         background: #f9f9f9;
-         border-radius: 8px;
-       }
+      .gift-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px 0;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 8px;
+      }
 
-       .gift-wrap input[type="checkbox"] {
-         width: 18px;
-         height: 18px;
-         accent-color: #c0392b;
-       }
+      .gift-wrap input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #c0392b;
+      }
 
-       .gift-wrap label {
-         font-size: 14px;
-         color: #333;
-         cursor: pointer;
-       }
+      .gift-wrap label {
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+      }
 
-       .cart-subtotal {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 15px 0;
-         border-top: 2px solid #eee;
-         margin-top: 20px;
-         font-size: 18px;
-         font-weight: 600;
-       }
+      .cart-subtotal {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-top: 2px solid #eee;
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 600;
+      }
 
-       .checkout-btn {
-         width: 100%;
-         padding: 15px;
-         background: #000;
-         color: white;
-         border: none;
-         border-radius: 8px;
-         font-size: 16px;
-         font-weight: 600;
-         cursor: pointer;
-         margin-bottom: 10px;
-         transition: background 0.3s ease;
-       }
+      .checkout-btn {
+        width: 100%;
+        padding: 15px;
+        background: #000;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background 0.3s ease;
+      }
 
-       .checkout-btn:hover {
-         background: #333;
-       }
+      .checkout-btn:hover {
+        background: #333;
+      }
 
-       .view-cart-link {
-         text-align: center;
-         color: #666;
-         text-decoration: none;
-         font-size: 14px;
-       }
+      .view-cart-link {
+        text-align: center;
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+      }
 
-       .view-cart-link:hover {
-         color: #333;
-       }
+      .view-cart-link:hover {
+        color: #333;
+      }
 
-       /* Responsive Design */
-       @media (max-width: 768px) {
-         header {
-           flex-direction: row;
-           gap: 20px;
-           padding: 15px 20px;
-         }
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: row;
+          gap: 20px;
+          padding: 15px 20px;
+        }
 
-         .menu-toggle {
-           display: block;
-           order: 3;
-         }
+        .menu-toggle {
+          display: block;
+          order: 3;
+        }
 
-         nav {
-           display: none;
-           position: absolute;
-           top: 100%;
-           left: 0;
-           right: 0;
-           background: white;
-           border-top: 1px solid #e5e5e5;
-           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-           z-index: 1000;
-         }
+        nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: white;
+          border-top: 1px solid #e5e5e5;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+        }
 
-         nav.active {
-           display: block;
-         }
+        nav.active {
+          display: block;
+        }
 
-         nav ul {
-           flex-direction: column;
-           gap: 0;
-           padding: 20px;
-         }
+        nav ul {
+          flex-direction: column;
+          gap: 0;
+          padding: 20px;
+        }
 
-         nav ul li {
-           border-bottom: 1px solid #f0f0f0;
-         }
+        nav ul li {
+          border-bottom: 1px solid #f0f0f0;
+        }
 
-         nav ul li:last-child {
-           border-bottom: none;
-         }
+        nav ul li:last-child {
+          border-bottom: none;
+        }
 
-         nav ul li a {
-           display: block;
-           padding: 15px 0;
-           border-radius: 0;
-         }
+        nav ul li a {
+          display: block;
+          padding: 15px 0;
+          border-radius: 0;
+        }
 
-         nav ul li a::after {
-           display: none;
-         }
+        nav ul li a::after {
+          display: none;
+        }
 
-         .product_section {
-           flex-direction: column;
-           gap: 30px;
-         }
+        .product_section {
+          flex-direction: column;
+          gap: 30px;
+        }
 
-         .product_images {
-           flex-direction: column;
-           align-items: center;
-         }
+        .product_images {
+          flex-direction: column;
+          align-items: center;
+        }
 
-         .product_images .thumbs {
-           flex-direction: row;
-           width: 100%;
-           justify-content: center;
-           margin-bottom: 20px;
-         }
+        .product_images .thumbs {
+          flex-direction: row;
+          width: 100%;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
 
-         .product_images .main_img {
-           width: 100%;
-           max-width: 500px;
-         }
+        .product_images .main_img {
+          width: 100%;
+          max-width: 500px;
+        }
 
-         .features_container {
-           flex-wrap: wrap;
-           gap: 30px;
-         }
+        .features_container {
+          flex-wrap: wrap;
+          gap: 30px;
+        }
 
-         .feature {
-           flex: 1 1 200px;
-         }
+        .feature {
+          flex: 1 1 200px;
+        }
 
-         .promo_container {
-           flex-direction: column;
-           gap: 30px;
-         }
+        .promo_container {
+          flex-direction: column;
+          gap: 30px;
+        }
 
-         .promo_right {
-           flex-direction: column;
-         }
-       }
+        .promo_right {
+          flex-direction: column;
+        }
+      }
 
-       /* Responsive Cart */
-       @media (max-width: 768px) {
-         .cart-container {
-           width: 100%;
-           height: 100vh;
-         }
-       }
-     </style>
+      /* Responsive Cart */
+      @media (max-width: 768px) {
+        .cart-container {
+          width: 100%;
+          height: 100vh;
+        }
+      }
+    </style>
   </head>
   <body>
-         <header class="header">
-       <img class="logo" src="/scr/Logo-removebg-preview.png" alt="Company logo" />
-       <button class="menu-toggle" aria-label="Open navigation menu">&#9776;</button>
-                <nav>
-           <ul>
-             <li><a href="index.html">Home</a></li>
-             <li><a href="Shop.html">Shop</a></li>
-             <li><a href="cart.html">Cart</a></li>
-             <li><a href="#" class="product">Products</a></li>
-             <li><a href="index.html">Pages</a></li>
-             <li><a href="login.html">Sign In</a></li>
-             <li><a href="signup.html">Register</a></li>
-           </ul>
-         </nav>
-                <div class="icons">
-           <i class="fa-solid fa-magnifying-glass"></i>
-           <a href="login.html"><i class="fa-regular fa-user"></i></a>
-           <i class="fa-regular fa-star"></i>
-                    <i class="fa-solid fa-bag-shopping" onclick="openCart()" style="cursor: pointer;"></i>
-         </div>
-     </header>
+    <header class="header">
+      <img
+        class="logo"
+        src="scr/Logo-removebg-preview.png"
+        alt="Company logo"
+      />
+      <button class="menu-toggle" aria-label="Open navigation menu">
+        &#9776;
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Shop.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="#" class="product">Products</a></li>
+          <li><a href="index.html">Pages</a></li>
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="signup.html">Register</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="login.html"><i class="fa-regular fa-user"></i></a>
+        <i class="fa-regular fa-star"></i>
+        <i
+          class="fa-solid fa-bag-shopping"
+          onclick="openCart()"
+          style="cursor: pointer"
+        ></i>
+      </div>
+    </header>
 
     <section class="product_section">
       <div class="product_images">
         <div class="thumbs">
-          <img class="thumb" src="/scr/images.jpg" alt="Product thumbnail 1" />
-          <img class="thumb" src="/scr/images2.jpg" alt="Product thumbnail 2" />
-          <img class="thumb" src="/scr/images3.jpg" alt="Product thumbnail 3" />
-          <img class="thumb" src="/scr/images4.jpg" alt="Product thumbnail 4" />
+          <img class="thumb" src="scr/images.jpg" alt="Product thumbnail 1" />
+          <img class="thumb" src="scr/images2.jpg" alt="Product thumbnail 2" />
+          <img class="thumb" src="scr/images3.jpg" alt="Product thumbnail 3" />
+          <img class="thumb" src="scr/images4.jpg" alt="Product thumbnail 4" />
         </div>
-        <img class="main_img" src="/scr/p1.jpg" alt="Main product image" />
+        <img class="main_img" src="scr/p1.jpg" alt="Main product image" />
       </div>
 
       <div class="product_details">
-        <img class="brand" src="scr/Logo-removebg-preview.png" alt="Brand logo" />
+        <img
+          class="brand"
+          src="scr/Logo-removebg-preview.png"
+          alt="Brand logo"
+        />
         <h2>Denim Jacket</h2>
 
         <div class="rating">
@@ -1414,23 +1433,34 @@ nav ul li a:hover {
         </div>
 
         <div class="countdown">
-          <div style="margin-bottom: 10px; font-size: 19px ; align-content: center;">⏰ Hurry up! Sale ends in:</div>
-          <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <div style="text-align: center;">
+          <div
+            style="margin-bottom: 10px; font-size: 19px; align-content: center"
+          >
+            ⏰ Hurry up! Sale ends in:
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 15px;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="text-align: center">
               <span id="countdown-days">02</span>
-              <div style="font-size: 12px; opacity: 0.9;">Days</div>
+              <div style="font-size: 12px; opacity: 0.9">Days</div>
             </div>
-            <div style="text-align: center;">
+            <div style="text-align: center">
               <span id="countdown-hours">06</span>
-              <div style="font-size: 12px; opacity: 0.9;">Hours</div>
+              <div style="font-size: 12px; opacity: 0.9">Hours</div>
             </div>
-            <div style="text-align: center;">
+            <div style="text-align: center">
               <span id="countdown-minutes">05</span>
-              <div style="font-size: 12px; opacity: 0.9;">Minutes</div>
+              <div style="font-size: 12px; opacity: 0.9">Minutes</div>
             </div>
-            <div style="text-align: center;">
+            <div style="text-align: center">
               <span id="countdown-seconds">30</span>
-              <div style="font-size: 12px; opacity: 0.9;">Seconds</div>
+              <div style="font-size: 12px; opacity: 0.9">Seconds</div>
             </div>
           </div>
         </div>
@@ -1467,11 +1497,11 @@ nav ul li a:hover {
               <input type="text" id="qty" value="1" readonly />
               <button onclick="increaseQty()">+</button>
             </div>
-                         <a href="#" class="buy_btn" onclick="addProductToCart()">Add to Cart</a>
-
+            <a href="#" class="buy_btn" onclick="addProductToCart()"
+              >Add to Cart</a
+            >
           </div>
         </div>
-
 
         <div class="extra_info">
           <div class="actions">
@@ -1495,8 +1525,8 @@ nav ul li a:hover {
           </div>
 
           <div class="payment">
-            <img src="/scr/Visa.jpg" alt="Visa" />
-            <img src="/scr/masterCard.jpg" alt="Mastercard" />
+            <img src="scr/Visa.jpg" alt="Visa" />
+            <img src="scr/masterCard.jpg" alt="Mastercard" />
           </div>
 
           <p class="guarantee">✅ Guarantee safe & secure checkout</p>
@@ -1568,57 +1598,80 @@ nav ul li a:hover {
             </div>
           </div>
         </div>
-                 <div class="promo_right">
-           <div class="carousel-container" id="carousel">
-             <div class="promo_item">
-               <img src="/scr/summer.png.jpg" alt="Spring dress with ruffled straps" />
-               <div class="discount">
-                 <p>01 — Spring Sale</p>
-                 <h4>30% OFF</h4>
-               </div>
-             </div>
-             <div class="promo_item">
-               <img src="/scr/pexels-godisable-jacob-226636-914668.jpg" alt="Denim summer outfit" />
-             </div>
-             <div class="promo_item">
-               <img src="/scr/pexels-anastasiya-gepp-654466-2065200.jpg" alt="Elegant evening dress" />
-               <div class="discount">
-                 <p>02 — Summer Collection</p>
-                 <h4>25% OFF</h4>
-               </div>
-             </div>
-             <div class="promo_item">
-               <img src="/scr/pexels-aizhana-aldanova-364644-983564.jpg" alt="Casual summer dress" />
-             </div>
-             <div class="promo_item">
-               <img src="/scr/images3.jpg" alt="Formal business attire" />
-               <div class="discount">
-                 <p>03 — Business Collection</p>
-                 <h4>40% OFF</h4>
-               </div>
-             </div>
-             <div class="promo_item">
-               <img src="/scr/pexels-postiglioni-852860.jpg" alt="Weekend casual outfit" />
-             </div>
-           </div>
-           
-           <div class="carousel-controls">
-             <button class="carousel-btn" onclick="prevSlide()" aria-label="Previous slide">
-               <i class="fa-solid fa-chevron-left"></i>
-             </button>
-             <div class="carousel-dots">
-               <span class="dot active" onclick="goToSlide(0)"></span>
-               <span class="dot" onclick="goToSlide(1)"></span>
-             </div>
-             <button class="carousel-btn" onclick="nextSlide()" aria-label="Next slide">
-               <i class="fa-solid fa-chevron-right"></i>
-             </button>
-           </div>
-         </div>
+        <div class="promo_right">
+          <div class="carousel-container" id="carousel">
+            <div class="promo_item">
+              <img
+                src="scr/summer.png.jpg"
+                alt="Spring dress with ruffled straps"
+              />
+              <div class="discount">
+                <p>01 — Spring Sale</p>
+                <h4>30% OFF</h4>
+              </div>
+            </div>
+            <div class="promo_item">
+              <img
+                src="scr/pexels-godisable-jacob-226636-914668.jpg"
+                alt="Denim summer outfit"
+              />
+            </div>
+            <div class="promo_item">
+              <img
+                src="scr/pexels-anastasiya-gepp-654466-2065200.jpg"
+                alt="Elegant evening dress"
+              />
+              <div class="discount">
+                <p>02 — Summer Collection</p>
+                <h4>25% OFF</h4>
+              </div>
+            </div>
+            <div class="promo_item">
+              <img
+                src="scr/pexels-aizhana-aldanova-364644-983564.jpg"
+                alt="Casual summer dress"
+              />
+            </div>
+            <div class="promo_item">
+              <img src="scr/images3.jpg" alt="Formal business attire" />
+              <div class="discount">
+                <p>03 — Business Collection</p>
+                <h4>40% OFF</h4>
+              </div>
+            </div>
+            <div class="promo_item">
+              <img
+                src="scr/pexels-postiglioni-852860.jpg"
+                alt="Weekend casual outfit"
+              />
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button
+              class="carousel-btn"
+              onclick="prevSlide()"
+              aria-label="Previous slide"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="goToSlide(0)"></span>
+              <span class="dot" onclick="goToSlide(1)"></span>
+            </div>
+            <button
+              class="carousel-btn"
+              onclick="nextSlide()"
+              aria-label="Next slide"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
     <section class="newsletter">
-      <img class="model1" src="/scr/p1.jpg" alt="Newsletter model 1" />
+      <img class="model1" src="scr/p1.jpg" alt="Newsletter model 1" />
       <div class="newsletter_content">
         <h2>Subscribe To Our Newsletter</h2>
         <p>
@@ -1649,52 +1702,57 @@ nav ul li a:hover {
 
       <div class="footer_bottom">
         <p>Copyright © 2022 Eprova. All Rights Reserved.</p>
-             </div>
-     </div>
+      </div>
+    </div>
 
-     <!-- Shopping Cart Overlay -->
-     <div class="cart-overlay" id="cartOverlay">
-       <div class="cart-container">
-         <div class="cart-header">
-           <h2>Shopping Cart</h2>
-           <button class="close-cart" onclick="closeCart()">×</button>
-         </div>
-         
-         <div class="free-shipping">
-           Buy $122.35 More And Get Free Shipping
-         </div>
-         
-         <div class="cart-item">
-           <img src="/scr/p1.jpg" alt="Denim Jacket" class="cart-item-img">
-           <div class="cart-item-details">
-             <div class="cart-item-title">Denim Jacket</div>
-             <div class="cart-item-color">Color: Red</div>
-             <div class="cart-item-price">$14.80</div>
-             <div class="cart-item-qty">
-               <button onclick="decreaseCartQty()">-</button>
-               <input type="text" id="cartQty" value="01" readonly>
-               <button onclick="increaseCartQty()">+</button>
-             </div>
-           </div>
-         </div>
-         
-         <div class="gift-wrap">
-           <input type="checkbox" id="giftWrap">
-           <label for="giftWrap">For $10.00 Please Wrap The Product</label>
-         </div>
-         
-         <div class="cart-subtotal">
-           <span>Subtotal</span>
-           <span>$100.00</span>
-         </div>
-         
-                   <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
-          <a href="cart.html" class="view-cart-link">View Cart</a>
-          <a href="project.html" class="view-cart-link" style="margin-top: 10px;">Continue Shopping</a>
-       </div>
-     </div>
+    <!-- Shopping Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+      <div class="cart-container">
+        <div class="cart-header">
+          <h2>Shopping Cart</h2>
+          <button class="close-cart" onclick="closeCart()">×</button>
+        </div>
 
-     <script>
+        <div class="free-shipping">Buy $122.35 More And Get Free Shipping</div>
+
+        <div class="cart-item">
+          <img src="scr/p1.jpg" alt="Denim Jacket" class="cart-item-img" />
+          <div class="cart-item-details">
+            <div class="cart-item-title">Denim Jacket</div>
+            <div class="cart-item-color">Color: Red</div>
+            <div class="cart-item-price">$14.80</div>
+            <div class="cart-item-qty">
+              <button onclick="decreaseCartQty()">-</button>
+              <input type="text" id="cartQty" value="01" readonly />
+              <button onclick="increaseCartQty()">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-wrap">
+          <input type="checkbox" id="giftWrap" />
+          <label for="giftWrap">For $10.00 Please Wrap The Product</label>
+        </div>
+
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span>$100.00</span>
+        </div>
+
+        <button
+          class="checkout-btn"
+          onclick="window.location.href='checkout.html'"
+        >
+          Checkout
+        </button>
+        <a href="cart.html" class="view-cart-link">View Cart</a>
+        <a href="project.html" class="view-cart-link" style="margin-top: 10px"
+          >Continue Shopping</a
+        >
+      </div>
+    </div>
+
+    <script>
       function increaseQty() {
         const qty = document.getElementById("qty");
         qty.value = parseInt(qty.value) + 1;
@@ -1785,150 +1843,157 @@ nav ul li a:hover {
         }, 1000);
       }
 
-             // Start the countdown when page loads
-       window.addEventListener("load", startCountdown);
+      // Start the countdown when page loads
+      window.addEventListener("load", startCountdown);
 
-       // Shopping Cart Functions
-       function openCart() {
-         document.getElementById('cartOverlay').style.display = 'flex';
-         document.body.style.overflow = 'hidden';
-       }
+      // Shopping Cart Functions
+      function openCart() {
+        document.getElementById("cartOverlay").style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
 
-       function closeCart() {
-         document.getElementById('cartOverlay').style.display = 'none';
-         document.body.style.overflow = 'auto';
-       }
+      function closeCart() {
+        document.getElementById("cartOverlay").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
 
-       function increaseCartQty() {
-         const cartQty = document.getElementById('cartQty');
-         cartQty.value = (parseInt(cartQty.value) + 1).toString().padStart(2, '0');
-         updateCartTotal();
-       }
+      function increaseCartQty() {
+        const cartQty = document.getElementById("cartQty");
+        cartQty.value = (parseInt(cartQty.value) + 1)
+          .toString()
+          .padStart(2, "0");
+        updateCartTotal();
+      }
 
-       function decreaseCartQty() {
-         const cartQty = document.getElementById('cartQty');
-         const currentQty = parseInt(cartQty.value);
-         if (currentQty > 1) {
-           cartQty.value = (currentQty - 1).toString().padStart(2, '0');
-           updateCartTotal();
-         }
-       }
+      function decreaseCartQty() {
+        const cartQty = document.getElementById("cartQty");
+        const currentQty = parseInt(cartQty.value);
+        if (currentQty > 1) {
+          cartQty.value = (currentQty - 1).toString().padStart(2, "0");
+          updateCartTotal();
+        }
+      }
 
-       function updateCartTotal() {
-         const cartQty = parseInt(document.getElementById('cartQty').value);
-         const giftWrap = document.getElementById('giftWrap').checked;
-         const itemPrice = 14.80;
-         const giftWrapPrice = giftWrap ? 10.00 : 0;
-         const total = (itemPrice * cartQty) + giftWrapPrice;
-         
-         document.querySelector('.cart-subtotal span:last-child').textContent = `$${total.toFixed(2)}`;
-       }
+      function updateCartTotal() {
+        const cartQty = parseInt(document.getElementById("cartQty").value);
+        const giftWrap = document.getElementById("giftWrap").checked;
+        const itemPrice = 14.8;
+        const giftWrapPrice = giftWrap ? 10.0 : 0;
+        const total = itemPrice * cartQty + giftWrapPrice;
 
-       // Close cart when clicking outside
-       document.getElementById('cartOverlay').addEventListener('click', function(e) {
-         if (e.target === this) {
-           closeCart();
-         }
-       });
+        document.querySelector(
+          ".cart-subtotal span:last-child"
+        ).textContent = `$${total.toFixed(2)}`;
+      }
 
-               // Update total when gift wrap checkbox changes
-        document.getElementById('giftWrap').addEventListener('change', updateCartTotal);
+      // Close cart when clicking outside
+      document
+        .getElementById("cartOverlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeCart();
+          }
+        });
 
-        // Carousel Functions
-        let currentSlide = 0;
-        const totalSlides = 2;
-        const carousel = document.getElementById('carousel');
-        const dots = document.querySelectorAll('.dot');
+      // Update total when gift wrap checkbox changes
+      document
+        .getElementById("giftWrap")
+        .addEventListener("change", updateCartTotal);
 
-        function updateCarousel() {
-          const translateX = -currentSlide * (100 / 3);
-          carousel.style.transform = `translateX(${translateX}%)`;
-          
-          // Update dots
-          dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
+      // Carousel Functions
+      let currentSlide = 0;
+      const totalSlides = 2;
+      const carousel = document.getElementById("carousel");
+      const dots = document.querySelectorAll(".dot");
+
+      function updateCarousel() {
+        const translateX = -currentSlide * (100 / 3);
+        carousel.style.transform = `translateX(${translateX}%)`;
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateCarousel();
+      }
+
+      // Auto slide every 5 seconds
+      setInterval(nextSlide, 5000);
+
+      // Mobile menu functionality
+      function initializeMobileMenu() {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navMenu = document.querySelector("nav");
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener("click", function (e) {
+            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+              navMenu.classList.remove("active");
+            }
+          });
+
+          // Close menu when clicking on a link
+          const navLinks = navMenu.querySelectorAll("a");
+          navLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              navMenu.classList.remove("active");
+            });
           });
         }
+      }
 
+      // Initialize mobile menu when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeMobileMenu();
+      });
 
-        function nextSlide() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateCarousel();
+      // Add product to cart function
+      function addProductToCart() {
+        const product = {
+          id: 999,
+          name: "Denim Jacket",
+          price: 39.0,
+          image: "scr/p1.jpg",
+          brand: "EPROVA",
+          category: "Jackets",
+        };
+
+        // Use the global addToCart function from auth-check.js
+        if (typeof window.addToCart === "function") {
+          window.addToCart(product);
         }
 
-        function prevSlide() {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-        }
+        // Show success message
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = "Added to Cart!";
+        button.style.background = "#28a745";
 
-        function goToSlide(slideIndex) {
-          currentSlide = slideIndex;
-          updateCarousel();
-        }
-
-                 // Auto slide every 5 seconds
-         setInterval(nextSlide, 5000);
-
-         // Mobile menu functionality
-         function initializeMobileMenu() {
-             const menuToggle = document.querySelector('.menu-toggle');
-             const navMenu = document.querySelector('nav');
-             
-             if (menuToggle && navMenu) {
-                 menuToggle.addEventListener('click', function() {
-                     navMenu.classList.toggle('active');
-                 });
-                 
-                 // Close menu when clicking outside
-                 document.addEventListener('click', function(e) {
-                     if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                         navMenu.classList.remove('active');
-                     }
-                 });
-                 
-                 // Close menu when clicking on a link
-                 const navLinks = navMenu.querySelectorAll('a');
-                 navLinks.forEach(link => {
-                     link.addEventListener('click', function() {
-                         navMenu.classList.remove('active');
-                     });
-                 });
-             }
-         }
-
-                 // Initialize mobile menu when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeMobileMenu();
-        });
-        
-        // Add product to cart function
-        function addProductToCart() {
-            const product = {
-                id: 999,
-                name: "Denim Jacket",
-                price: 39.00,
-                image: "/scr/p1.jpg",
-                brand: "EPROVA",
-                category: "Jackets"
-            };
-            
-            // Use the global addToCart function from auth-check.js
-            if (typeof window.addToCart === 'function') {
-                window.addToCart(product);
-            }
-            
-            // Show success message
-            const button = event.target;
-            const originalText = button.textContent;
-            button.textContent = 'Added to Cart!';
-            button.style.background = '#28a745';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
-            }, 2000);
-        }
-      </script>
-                 <script src="./js/common.js"></script>
-    </body>
- </html>
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.background = "";
+        }, 2000);
+      }
+    </script>
+    <script src="./js/common.js"></script>
+  </body>
+</html>
