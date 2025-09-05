@@ -76,6 +76,38 @@
         height: 45px;
         font-size: 1.1rem;
     }
+    
+    /* Ensure hamburger menu has enough space */
+    .header {
+        position: relative;
+        padding-right: 120px; /* Make room for both dark mode toggle and hamburger */
+    }
+    
+    .menu-toggle {
+        right: 15px;
+        position: absolute;
+    }
+}
+
+/* Very small screens - stack dark mode toggle above hamburger */
+@media (max-width: 480px) {
+    .dark-mode-toggle {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .header {
+        padding-right: 70px; /* Less padding for small screens */
+    }
+    
+    .menu-toggle {
+        top: 65px; /* Position below dark mode toggle */
+        right: 15px;
+        position: absolute;
+    }
 }
 
 /* Apply theme variables to body and main containers */

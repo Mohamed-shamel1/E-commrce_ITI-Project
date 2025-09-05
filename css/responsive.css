@@ -35,17 +35,18 @@
         flex-direction: column;
         gap: 0;
         width: 100%;
-        background: white;
-        border-top: 1px solid #e1e5e9;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        background: var(--nav-bg, white);
+        border-top: 1px solid var(--border-color, #e1e5e9);
+        box-shadow: 0 4px 10px var(--shadow-light, rgba(0,0,0,0.1));
         position: absolute;
         top: 100%;
         left: 0;
         z-index: 1000;
         display: none;
+        backdrop-filter: blur(10px);
     }
     
-    .nav-list.active, nav.active ul {
+    .nav-list.show, .nav-list.active, nav.active ul {
         display: flex;
     }
     
