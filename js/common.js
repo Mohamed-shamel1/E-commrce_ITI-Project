@@ -1,5 +1,103 @@
 // Common JavaScript functions for all pages
 
+// Dark Mode functionality
+class DarkModeManager {
+    constructor() {
+        this.storageKey = 'darkMode';
+        this.theme = this.getTheme();
+        this.init();
+    }
+
+    init() {
+        this.applyTheme(this.theme);
+        this.createToggleButton();
+        this.setupEventListeners();
+    }
+
+    getTheme() {
+        // Check localStorage first
+        const saved = localStorage.getItem(this.storageKey);
+        if (saved) return saved;
+        
+        // Check system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        
+        return 'light';
+    }
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        this.theme = theme;
+        this.updateToggleButton();
+    }
+
+    toggleTheme() {
+        const newTheme = this.theme === 'light' ? 'dark' : 'light';
+        this.applyTheme(newTheme);
+        localStorage.setItem(this.storageKey, newTheme);
+    }
+
+    createToggleButton() {
+        const button = document.createElement('button');
+        button.className = 'dark-mode-toggle';
+        button.setAttribute('aria-label', 'Toggle dark mode');
+        button.innerHTML = `
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span id="theme-text">Dark</span>
+        `;
+        
+        document.body.appendChild(button);
+        this.toggleButton = button;
+    }
+
+    updateToggleButton() {
+        const icon = document.getElementById('theme-icon');
+        const text = document.getElementById('theme-text');
+        
+        if (icon && text) {
+            if (this.theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light';
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark';
+            }
+        }
+    }
+
+    setupEventListeners() {
+        // Toggle button click
+        if (this.toggleButton) {
+            this.toggleButton.addEventListener('click', () => this.toggleTheme());
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem(this.storageKey)) {
+                    this.applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        }
+
+        // Keyboard shortcut: Ctrl/Cmd + Shift + D
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'D') {
+                e.preventDefault();
+                this.toggleTheme();
+            }
+        });
+    }
+}
+
+// Initialize dark mode manager
+const darkModeManager = new DarkModeManager();
+
+// Make it globally available
+window.darkModeManager = darkModeManager;
+
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('a[href^="#"]');

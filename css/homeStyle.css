@@ -3,16 +3,22 @@
 }
 body{
     font-family:  "Segoe UI", sans-serif;
+    background-color: var(--bg-primary, #ffffff);
+    color: var(--text-primary, #333333);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 /* Header styles */
 .header {
-  /* background-color: blueviolet; */
+  background-color: var(--bg-navbar, rgba(255, 255, 255, 0.95));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light, #e9ecef);
   padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   min-height: 56px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .header img {
   max-height: 200px;
@@ -24,18 +30,37 @@ body{
 }
 .menu-toggle {
     display: none;
-    background: none;
-    border: none;
-    color: rgb(0, 0, 0);
-    font-size: 2rem;
+    background: var(--bg-secondary, #f8f9fa);
+    border: 2px solid var(--border-medium, #dee2e6);
+    color: var(--text-primary, #000);
+    font-size: 1.5rem;
     cursor: pointer;
-    padding: 5px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow-light, rgba(0,0,0,0.1));
+    z-index: 9999;
+    position: relative;
 }
 
 .menu-toggle:hover {
-    background-color: #f5f5f5;
+    background-color: var(--btn-secondary-hover, #e9ecef);
+    color: var(--header-icon-hover, #e74c3c);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px var(--shadow-medium, rgba(0,0,0,0.15));
+}
+
+.menu-toggle:focus {
+    outline: 3px solid var(--input-focus, #000);
+    outline-offset: 2px;
+}
+
+.menu-toggle:active {
+    transform: scale(0.98);
 }
 .nav-list {
   list-style-type: none;
@@ -52,28 +77,29 @@ body{
 
 .nav-list li a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: var(--nav-link-color, rgb(0, 0, 0));
   font-weight: 600;
   text-transform: uppercase;
   padding: 10px 15px;
   display: block;
-  border-radius: 8px; /* خليها مربعة بزاوية خفيفة */
+  border-radius: 8px;
   transition: all 0.3s ease;
   font-size: 0.9rem;
 }
 
 .nav-list li a:hover,
 .nav-list li.active a{
-  background: #000; /* خلفية سوداء */
-  color: #fff;      /* النص أبيض */
-  transform: translateY(-1.5px); /* يطلع لفوق سيكا */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* ظل ناعم تحت البوكس */
+  background: var(--nav-link-hover-bg, #000);
+  color: var(--nav-link-hover, #fff);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 8px var(--shadow-dark, rgba(0, 0, 0, 0.4));
 }
 
 .hero {
-  background: #ffffff;
+  background: var(--bg-hero, #ffffff);
   padding: 20px 10px;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .hero img {
@@ -85,6 +111,7 @@ body{
   font-size: 2.5rem;
   font-weight: bold;
   margin: 10px 0;
+  color: var(--text-primary, #333333);
 }
 
 .hero-center h2 {
@@ -99,12 +126,12 @@ body{
   font-size: 1.2rem;
   letter-spacing: 2px;
   margin: 15px 0;
-  color: #333;
+  color: var(--text-secondary, #333);
 }
 
 .hero-center button {
-  background-color: #000;
-      color: #fff;
+  background-color: var(--btn-primary-bg, #000);
+      color: var(--btn-primary-text, #fff);
       border: none;
       padding: 10px 40px;
       font-size: 1.2rem;
@@ -113,12 +140,13 @@ body{
       margin: 15px 0;
       transition: all 0.3s ease;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 15px var(--shadow-medium, rgba(0, 0, 0, 0.3));
 }
 
 .hero-center button:hover {
+  background-color: var(--btn-primary-hover, #333);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px var(--shadow-dark, rgba(102, 126, 234, 0.4));
 }
 
 .small-banner img {
@@ -132,14 +160,15 @@ body{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--bg-card, #ffffff);
   max-width: 1800px;
   margin: 0 auto;
   gap: 50px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 40px var(--shadow-light, rgba(0, 0, 0, 0.05));
   border-radius: 20px;
   margin-top: 40px;
   margin-bottom: 40px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .deal-text {
@@ -151,7 +180,7 @@ body{
 .deal-text h2 {
   font-size: 3.2rem;
   margin-bottom: 20px;
-  color: #1a202c;
+  color: var(--text-primary, #1a202c);
   font-weight: 800;
   font-family: 'Georgia', serif;
   line-height: 1.1;
@@ -160,7 +189,7 @@ body{
 }
 
 .deal-text p {
-  color: #4a5568;
+  color: var(--text-secondary, #4a5568);
   margin-bottom: 35px;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -423,7 +452,7 @@ body{
   }
 
   .menu-toggle {
-    display: block;
+    display: flex !important;
   }
 
   .nav-menu {
@@ -845,7 +874,7 @@ p {
     margin-right: 10px;
   }
   .menu-toggle {
-    display: block;
+    display: flex !important;
     margin-left: 0;
     margin-right: 0;
     align-self: center;

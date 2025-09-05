@@ -59,7 +59,7 @@
 .search-toggle {
     background: none;
     border: none;
-    color: black;
+    color: var(--header-icon-color, black);
     font-size: 1.2rem;
     cursor: pointer;
     padding: 8px;
@@ -68,8 +68,8 @@
 }
 
 .search-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #e74c3c;
+    background: var(--btn-secondary-hover, rgba(255, 255, 255, 0.1));
+    color: var(--header-icon-hover, #e74c3c);
 }
 
 .search-expand {
@@ -131,7 +131,7 @@
 }
 
 .profile-icon {
-    color: black;
+    color: var(--header-icon-color, black);
     font-size: 1.2rem;
     text-decoration: none;
     padding: 8px;
@@ -140,13 +140,13 @@
 }
 
 .profile-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #e74c3c;
+    background: var(--btn-secondary-hover, rgba(255, 255, 255, 0.1));
+    color: var(--header-icon-hover, #e74c3c);
 }
 
 .cart-icon {
     position: relative;
-    color: rgb(0, 0, 0);
+    color: var(--header-icon-color, rgb(0, 0, 0));
     font-size: 1.2rem;
     cursor: pointer;
     padding: 8px;
@@ -155,8 +155,8 @@
 }
 
 .cart-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color:#e74c3c
+    background: var(--btn-secondary-hover, rgba(255, 255, 255, 0.1));
+    color: var(--header-icon-hover, #e74c3c);
 }
 
 .cart-badge {
