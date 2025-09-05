@@ -19,15 +19,27 @@
 <body>
     <div class="header">
       <a href="#"><img src="./scr/Logo-removebg-preview.png" alt="" style="width: min-content;"></a>
-      <button class="menu-toggle" aria-label="Open navigation menu">&#9776;</button>
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
       <ul class="nav-list">
         <li> <a href="project.html">deals</a></li>
         <li><a href="Shop.html">shop</a></li>
         <li><a href="cart.html">new arrivals</a></li>
         <li><a href="checkout.html">checkout</a></li>
         <li><a href="#">contact us</a></li>
-        <li><a href="login.html">sign in</a></li>
+        <li><a href="login.html" class="profile-link">sign in</a></li>
         <li class="active"><a href="signup.html">register</a></li>
+        <li class="profile-icon-container">
+          <button class="profile-icon" aria-label="User profile" style="display: none;">
+            <i class="fas fa-user"></i>
+          </button>
+        </li>
       </ul>
     </div>
 

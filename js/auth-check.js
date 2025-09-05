@@ -144,7 +144,8 @@ async function loadUsers() {
                 email: "john@example.com",
                 password: "password123",
                 createdAt: "2024-01-15T10:30:00Z",
-                lastLogin: "2024-01-20T14:45:00Z"
+                lastLogin: "2024-01-20T14:45:00Z",
+                profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
             },
             {
                 id: 2,
@@ -152,7 +153,8 @@ async function loadUsers() {
                 email: "jane@example.com",
                 password: "password123",
                 createdAt: "2024-01-16T09:15:00Z",
-                lastLogin: "2024-01-19T16:20:00Z"
+                lastLogin: "2024-01-19T16:20:00Z",
+                profileImage: "https://images.unsplash.com/photo-1494790108755-2616b332c1c9?w=150&h=150&fit=crop&crop=face"
             },
             {
                 id: 3,
@@ -161,6 +163,7 @@ async function loadUsers() {
                 password: "password123",
                 createdAt: "2024-01-17T11:00:00Z",
                 lastLogin: "2024-01-18T13:30:00Z"
+                // No profileImage - will use initials fallback
             }
         ];
     }
@@ -191,21 +194,57 @@ function setupAuthUI() {
 function updateUIForAuthenticatedUser() {
     if (!currentUser) return;
     
-    // Update profile icons to show user info
-    const profileIcons = document.querySelectorAll('.profile-icon, .fa-user, .fa-regular.fa-user');
-    profileIcons.forEach(icon => {
-        if (icon.tagName === 'A') {
-            icon.href = '#';
-            icon.onclick = showUserMenu;
-        } else if (icon.tagName === 'I') {
-            icon.parentElement.href = '#';
-            icon.parentElement.onclick = showUserMenu;
-        }
+    // Show profile icon and hide login/register links
+    const profileIcon = document.querySelector('.profile-icon');
+    const profileLink = document.querySelector('.profile-link');
+    const registerLinks = document.querySelectorAll('a[href*="signup"]');
+    
+    if (profileIcon) {
+        profileIcon.style.display = 'flex';
+        profileIcon.addEventListener('click', showUserMenu);
+        
+        // Load mini avatar for navigation
+        loadProfileIconAvatar(profileIcon);
+    }
+    
+    if (profileLink) {
+        profileLink.style.display = 'none';
+    }
+    
+    registerLinks.forEach(link => {
+        link.style.display = 'none';
     });
     
     // Update navigation to show user-specific items
     updateNavigationForUser();
     updateCartBadge();
+}
+
+// Load mini avatar for profile icon
+function loadProfileIconAvatar(profileIcon) {
+    if (currentUser.profileImage) {
+        profileIcon.classList.add('loading');
+        
+        const img = new Image();
+        img.onload = function() {
+            profileIcon.classList.remove('loading');
+            profileIcon.innerHTML = `<img src="${currentUser.profileImage}" alt="Profile" class="mini-avatar">`;
+        };
+        
+        img.onerror = function() {
+            profileIcon.classList.remove('loading');
+            // Keep default icon on error
+        };
+        
+        img.src = currentUser.profileImage;
+        
+        // Timeout fallback
+        setTimeout(() => {
+            if (profileIcon.classList.contains('loading')) {
+                profileIcon.classList.remove('loading');
+            }
+        }, 3000);
+    }
 }
 
 // Update navigation for authenticated user
@@ -218,6 +257,70 @@ function updateNavigationForUser() {
             item.onclick = showUserMenu;
         }
     });
+}
+
+// Enhanced Avatar Component with Loading States
+function createAvatarElement(user, size = 50) {
+    const avatar = document.createElement('div');
+    avatar.className = 'user-avatar';
+    avatar.style.width = `${size}px`;
+    avatar.style.height = `${size}px`;
+    avatar.style.fontSize = `${size * 0.4}px`;
+    
+    // Try to load user's profile image if available
+    if (user.profileImage) {
+        loadAvatarImage(avatar, user.profileImage, user.fullName);
+    } else {
+        // Show fallback with initials
+        showAvatarFallback(avatar, user.fullName);
+    }
+    
+    return avatar;
+}
+
+function loadAvatarImage(avatarElement, imageUrl, fullName) {
+    // Show loading spinner
+    avatarElement.innerHTML = '<div class="avatar-loading"></div>';
+    
+    const img = new Image();
+    
+    // Set up image loading with timeout
+    const loadingTimeout = setTimeout(() => {
+        // If image takes too long, show fallback
+        showAvatarFallback(avatarElement, fullName);
+    }, 3000); // 3 second timeout
+    
+    img.onload = function() {
+        clearTimeout(loadingTimeout);
+        avatarElement.innerHTML = '';
+        avatarElement.appendChild(img);
+    };
+    
+    img.onerror = function() {
+        clearTimeout(loadingTimeout);
+        // Show fallback on error
+        showAvatarFallback(avatarElement, fullName);
+    };
+    
+    img.src = imageUrl;
+    img.alt = `${fullName} profile picture`;
+}
+
+function showAvatarFallback(avatarElement, fullName) {
+    const fallback = document.createElement('div');
+    fallback.className = 'avatar-fallback';
+    fallback.textContent = getInitials(fullName);
+    
+    avatarElement.innerHTML = '';
+    avatarElement.appendChild(fallback);
+}
+
+function getInitials(fullName) {
+    return fullName
+        .split(' ')
+        .map(name => name.charAt(0).toUpperCase())
+        .join('')
+        .slice(0, 2); // Maximum 2 initials
 }
 
 // Show user menu with cart items
@@ -270,37 +373,59 @@ function showUserMenu(e) {
     // Create user menu
     const userMenu = document.createElement('div');
     userMenu.className = 'user-menu';
-    userMenu.innerHTML = `
-        <div class="user-menu-header">
-            <div class="user-avatar">${currentUser.fullName.charAt(0)}</div>
-            <div class="user-info">
-                <div class="user-name">${currentUser.fullName}</div>
-                <div class="user-email">${currentUser.email}</div>
-            </div>
-        </div>
-        ${cartItemsHTML}
-        <div class="user-menu-items">
-            <a href="index.html" class="menu-item">
-                <i class="fas fa-home"></i> Home
-            </a>
-            <a href="Shop.html" class="menu-item">
-                <i class="fas fa-shopping-bag"></i> Shop
-            </a>
-            <a href="cart.html" class="menu-item">
-                <i class="fas fa-shopping-cart"></i> Cart (${getCartItemCount()})
-            </a>
-            <a href="project.html" class="menu-item">
-                <i class="fas fa-tags"></i> Deals
-            </a>
-            <a href="checkout.html" class="menu-item">
-                <i class="fas fa-credit-card"></i> Checkout
-            </a>
-            <div class="menu-divider"></div>
-            <button class="menu-item logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i> Sign Out
-            </button>
-        </div>
+    
+    // Create header with enhanced avatar
+    const menuHeader = document.createElement('div');
+    menuHeader.className = 'user-menu-header';
+    
+    // Create and append avatar
+    const avatarElement = createAvatarElement(currentUser, 50);
+    menuHeader.appendChild(avatarElement);
+    
+    // Create user info
+    const userInfo = document.createElement('div');
+    userInfo.className = 'user-info';
+    userInfo.innerHTML = `
+        <div class="user-name">${currentUser.fullName}</div>
+        <div class="user-email">${currentUser.email}</div>
     `;
+    menuHeader.appendChild(userInfo);
+    
+    // Add header to menu
+    userMenu.appendChild(menuHeader);
+    
+    // Add cart section
+    if (cartItemsHTML.trim()) {
+        const cartSection = document.createElement('div');
+        cartSection.innerHTML = cartItemsHTML;
+        userMenu.appendChild(cartSection.firstElementChild);
+    }
+    
+    // Add menu items
+    const menuItems = document.createElement('div');
+    menuItems.className = 'user-menu-items';
+    menuItems.innerHTML = `
+        <a href="index.html" class="menu-item">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="Shop.html" class="menu-item">
+            <i class="fas fa-shopping-bag"></i> Shop
+        </a>
+        <a href="cart.html" class="menu-item">
+            <i class="fas fa-shopping-cart"></i> Cart (${getCartItemCount()})
+        </a>
+        <a href="project.html" class="menu-item">
+            <i class="fas fa-tags"></i> Deals
+        </a>
+        <a href="checkout.html" class="menu-item">
+            <i class="fas fa-credit-card"></i> Checkout
+        </a>
+        <div class="menu-divider"></div>
+        <button class="menu-item logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+        </button>
+    `;
+    userMenu.appendChild(menuItems);
     
     // Position menu near the clicked element
     const rect = e.target.getBoundingClientRect();
@@ -374,6 +499,43 @@ const userMenuStyles = `
     justify-content: center;
     font-size: 20px;
     font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-avatar .avatar-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.user-avatar .avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .user-info {

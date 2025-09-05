@@ -222,6 +222,16 @@ const viewButtons = document.querySelectorAll('.view-btn');
 
 // Initialize shop page
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme before everything else
+    if (typeof initializeTheme === 'function') {
+        initializeTheme();
+    }
+    
+    // Initialize mobile menu
+    if (typeof initializeMobileMenu === 'function') {
+        initializeMobileMenu();
+    }
+    
     initializeShop();
     setupEventListeners();
     loadProducts(products);
