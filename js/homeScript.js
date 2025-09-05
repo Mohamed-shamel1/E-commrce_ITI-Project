@@ -1,8 +1,89 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const navList = document.querySelector('.nav-list');
-menuToggle.addEventListener('click', () => {
-  navList.classList.toggle('show');
-});
+// Theme Management System
+function initializeTheme() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = themeToggle?.querySelector('i');
+    
+    // Get saved theme or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    // Apply saved theme
+    applyTheme(savedTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            // Add rotation animation
+            themeToggle.classList.add('rotating');
+            
+            // Apply new theme after animation starts
+            setTimeout(() => {
+                applyTheme(newTheme);
+                themeToggle.classList.remove('rotating');
+            }, 150);
+        });
+    }
+}
+
+function applyTheme(theme) {
+    const themeIcon = document.querySelector('.theme-toggle i');
+    
+    // Apply theme to document
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update icon
+    if (themeIcon) {
+        if (theme === 'dark') {
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            themeIcon.className = 'fas fa-moon';
+        }
+    }
+    
+    // Save theme preference
+    localStorage.setItem('theme', theme);
+    
+    // Dispatch theme change event
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+}
+
+// Enhanced Mobile Menu functionality
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            navList.classList.toggle('show');
+            menuToggle.classList.toggle('active');
+            
+            // Add aria-expanded for accessibility
+            const isExpanded = navList.classList.contains('show');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !navList.contains(e.target)) {
+                navList.classList.remove('show');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = navList.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navList.classList.remove('show');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+}
 
 let currentIndex = 0;
 
@@ -168,35 +249,11 @@ function prevTestimonial() {
     updateTestimonial();
 }
 
-// Mobile menu functionality
-function initializeMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
-    }
-}
+// Removed duplicate mobile menu function - using enhanced version above
 
 // Initialize everything when DOM is loaded
 window.addEventListener('DOMContentLoaded', () => {
+  initializeTheme();
   createDots();
   initializeSlider();
   startCountdown();
