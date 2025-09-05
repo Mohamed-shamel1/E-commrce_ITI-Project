@@ -26,7 +26,7 @@ body {
 .auth-image {
     flex: 1;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-image: url('../../scr/pexels-postiglioni-852860.jpg');
+    background-image: url('../scr/pexels-postiglioni-852860.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
