@@ -1,0 +1,452 @@
+/* Dark Mode Styles */
+
+/* Light theme variables (default) */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #e1e5e9;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --accent-primary: #667eea;
+    --accent-hover: #5a6fd8;
+    --success-color: #28a745;
+    --error-color: #e74c3c;
+    --card-bg: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --footer-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #404040;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    --border-color: #404040;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --accent-primary: #7c8aed;
+    --accent-hover: #8b96ef;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --card-bg: #2d2d2d;
+    --nav-bg: rgba(26, 26, 26, 0.95);
+    --footer-bg: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+    background: var(--accent-hover);
+    box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+/* Mobile positioning for dark mode toggle */
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        top: 15px;
+        right: 70px; /* Position to avoid hamburger menu */
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    /* Ensure hamburger menu has enough space */
+    .header {
+        position: relative;
+        padding-right: 120px; /* Make room for both dark mode toggle and hamburger */
+    }
+    
+    .menu-toggle {
+        right: 15px;
+        position: absolute;
+    }
+}
+
+/* Very small screens - stack dark mode toggle above hamburger */
+@media (max-width: 480px) {
+    .dark-mode-toggle {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .header {
+        padding-right: 70px; /* Less padding for small screens */
+    }
+    
+    .menu-toggle {
+        top: 65px; /* Position below dark mode toggle */
+        right: 15px;
+        position: absolute;
+    }
+}
+
+/* Apply theme variables to body and main containers */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header styles */
+.header {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.nav-list li a {
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-list li a:hover,
+.nav-list li.active a {
+    background: var(--accent-primary) !important;
+    color: white !important;
+}
+
+/* Hero section */
+.hero {
+    background: var(--bg-primary);
+}
+
+.hero-center h1,
+.hero-center h2 {
+    color: var(--text-primary);
+}
+
+.hero-center h2 {
+    -webkit-text-stroke: 1px var(--text-primary);
+}
+
+.hero-center p {
+    color: var(--text-secondary);
+}
+
+.hero-center button {
+    background-color: var(--accent-primary);
+    color: white;
+    border: 1px solid var(--accent-primary);
+}
+
+.hero-center button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Deal section */
+.deal-section {
+    background-color: var(--card-bg);
+    box-shadow: 0 10px 40px var(--shadow-light);
+}
+
+.deal-text h2,
+.deal-text h3 {
+    color: var(--text-primary);
+}
+
+.deal-text p {
+    color: var(--text-secondary);
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.card-content h3 {
+    color: var(--text-primary);
+}
+
+.card-content .brand,
+.card-content .category {
+    color: var(--text-secondary);
+}
+
+.card-content .count {
+    color: var(--text-muted);
+}
+
+.card-content .price {
+    color: var(--accent-primary);
+}
+
+.card-content .stock {
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn, button {
+    background-color: var(--accent-primary);
+    color: white;
+    border: 1px solid var(--accent-primary);
+    transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+    background-color: var(--accent-hover);
+}
+
+.category-buttons button {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.category-buttons button:hover,
+.category-buttons button.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* Section headers */
+.section-header h2,
+.folow-us h2,
+.testimonials h2 {
+    color: var(--text-primary);
+}
+
+.section-header p,
+.folow-us p,
+.testimonials p {
+    color: var(--text-secondary);
+}
+
+/* Newsletter section */
+.nl-section {
+    background: var(--bg-primary);
+}
+
+.nl-newsletter h2 {
+    color: var(--text-primary);
+}
+
+.nl-newsletter p {
+    color: var(--text-secondary);
+}
+
+.nl-newsletter input {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.nl-newsletter input::placeholder {
+    color: var(--text-muted);
+}
+
+.nl-newsletter button {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+/* Testimonials */
+.testimonial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.testimonial-card p {
+    color: var(--text-secondary);
+}
+
+.customer-name {
+    color: var(--text-primary);
+}
+
+.customer-role {
+    color: var(--text-muted);
+}
+
+/* Footer */
+.nl-footer,
+.footer {
+    background: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.nl-footer-nav a,
+.footer_links a {
+    color: var(--text-secondary);
+}
+
+.nl-footer-nav a:hover,
+.footer_links a:hover {
+    color: var(--accent-primary);
+}
+
+.nl-footer-bottom {
+    color: var(--text-muted);
+}
+
+/* Form elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-primary);
+}
+
+/* Countdown timer */
+.countdown {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.countdown div span {
+    color: white;
+}
+
+.countdown div small {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Slider navigation */
+.slider-btn {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+}
+
+.slider-btn:hover {
+    background: var(--accent-hover);
+}
+
+.slider-dot {
+    background: var(--border-color);
+}
+
+.slider-dot.active {
+    background: var(--accent-primary);
+}
+
+/* Testimonial navigation */
+.testimonial-nav {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+}
+
+.testimonial-nav:hover {
+    background: var(--accent-hover);
+}
+
+/* Mobile menu dark mode */
+@media (max-width: 768px) {
+    .nav-list {
+        background: var(--nav-bg);
+        border-top: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+    }
+    
+    .nav-list li {
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
+/* Loading states */
+.loading::after {
+    border: 2px solid var(--border-color);
+    border-top: 2px solid var(--accent-primary);
+}
+
+/* Success and error states */
+.success {
+    background: var(--success-color);
+}
+
+.error {
+    background: var(--error-color);
+}
+
+/* Enhanced components */
+.card-enhanced {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.nav-enhanced {
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-enhanced {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.input-enhanced {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.input-enhanced:focus {
+    border-color: var(--accent-primary);
+    background: var(--bg-primary);
+}
+
+/* Smooth transition for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Image adjustments for dark mode */
+[data-theme="dark"] img {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}

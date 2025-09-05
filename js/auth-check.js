@@ -1,8 +1,8 @@
 // Authentication Check Script - Include in all pages
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     checkAuthStatus();
-    setupAuthUI();
+    await setupAuthUI();
     initializeCart();
 });
 
@@ -22,6 +22,44 @@ function initializeCart() {
 // Save cart to localStorage
 function saveCart() {
     localStorage.setItem('userCart', JSON.stringify(userCart));
+}
+
+// Show loading state for profile icons
+function showProfileIconsLoading() {
+    const profileIcons = document.querySelectorAll('.profile-icon, .fa-user, .fa-regular.fa-user');
+    profileIcons.forEach(icon => {
+        const parentElement = icon.tagName === 'I' ? icon.parentElement : icon;
+        parentElement.classList.add('profile-loading');
+        
+        // Add loading spinner
+        if (!parentElement.querySelector('.profile-spinner')) {
+            const spinner = document.createElement('div');
+            spinner.className = 'profile-spinner';
+            spinner.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            parentElement.appendChild(spinner);
+        }
+        
+        // Hide original icon temporarily
+        icon.style.opacity = '0.3';
+    });
+}
+
+// Hide loading state for profile icons
+function hideProfileIconsLoading() {
+    const profileIcons = document.querySelectorAll('.profile-icon, .fa-user, .fa-regular.fa-user');
+    profileIcons.forEach(icon => {
+        const parentElement = icon.tagName === 'I' ? icon.parentElement : icon;
+        parentElement.classList.remove('profile-loading');
+        
+        // Remove loading spinner
+        const spinner = parentElement.querySelector('.profile-spinner');
+        if (spinner) {
+            spinner.remove();
+        }
+        
+        // Restore original icon
+        icon.style.opacity = '1';
+    });
 }
 
 // Add item to cart
@@ -167,8 +205,27 @@ async function loadUsers() {
 }
 
 // Setup authentication UI
-function setupAuthUI() {
-    loadUsers();
+async function setupAuthUI() {
+    // Show loading state for profile icons
+    showProfileIconsLoading();
+    
+    // Set a maximum timeout for loading to prevent infinite loading
+    const loadingTimeout = setTimeout(() => {
+        console.warn('Profile icon loading timeout - hiding loading state');
+        hideProfileIconsLoading();
+    }, 5000); // 5 second timeout
+    
+    try {
+        await loadUsers();
+    } catch (error) {
+        console.error('Error setting up auth UI:', error);
+    }
+    
+    // Clear timeout since loading completed
+    clearTimeout(loadingTimeout);
+    
+    // Remove loading state and update profile icons
+    hideProfileIconsLoading();
     
     // Update profile icons to show user info
     const profileIcons = document.querySelectorAll('.profile-icon, .fa-user, .fa-regular.fa-user');
@@ -637,6 +694,31 @@ const userMenuStyles = `
         transform: translateX(100%);
         opacity: 0;
     }
+}
+
+/* Profile Loading Styles */
+.profile-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.profile-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    color: #667eea;
+    z-index: 10;
+}
+
+.profile-spinner i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Responsive Design for User Menu */

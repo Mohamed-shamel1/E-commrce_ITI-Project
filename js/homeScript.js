@@ -1,8 +1,48 @@
-const menuToggle = document.querySelector('.menu-toggle');
-const navList = document.querySelector('.nav-list');
-menuToggle.addEventListener('click', () => {
-  navList.classList.toggle('show');
-});
+// Mobile menu functionality - improved version
+function initializeMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    if (menuToggle && navList) {
+        // Toggle menu on hamburger click
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            navList.classList.toggle('show');
+            
+            // Add animation class to hamburger
+            menuToggle.style.transform = navList.classList.contains('show') 
+                ? 'rotate(90deg)' : 'rotate(0deg)';
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navList.contains(e.target)) {
+                navList.classList.remove('show');
+                menuToggle.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = navList.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('show');
+                menuToggle.style.transform = 'rotate(0deg)';
+            });
+        });
+        
+        // Close menu on window resize if screen becomes large
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navList.classList.remove('show');
+                menuToggle.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+}
+
+// Initialize mobile menu
+initializeMobileMenu();
 
 let currentIndex = 0;
 
@@ -168,32 +208,7 @@ function prevTestimonial() {
     updateTestimonial();
 }
 
-// Mobile menu functionality
-function initializeMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
-    }
-}
+// Removed duplicate mobile menu functionality - now handled at top of file
 
 // Initialize everything when DOM is loaded
 window.addEventListener('DOMContentLoaded', () => {
@@ -201,7 +216,6 @@ window.addEventListener('DOMContentLoaded', () => {
   initializeSlider();
   startCountdown();
   startAutoSlide();
-  initializeMobileMenu();
   
   // Add CSS animation for countdown pulse
   const style = document.createElement('style');
